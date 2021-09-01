@@ -14,6 +14,7 @@ function handle_upload(event) {
         });
 
     alert("File uploaded! We'll email you when the job is done.");
+    
 
 }
 
