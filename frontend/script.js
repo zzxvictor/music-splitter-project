@@ -1,6 +1,6 @@
 
 function handle_upload(event) {
-    // event.preventDefault();
+    event.preventDefault();
     const formData = new FormData(event.target);
     const apigClient = apigClientFactory.newClient();
 
@@ -14,7 +14,6 @@ function handle_upload(event) {
         });
 
     alert("File uploaded! We'll email you when the job is done.");
-    
 
 }
 
@@ -43,9 +42,17 @@ function handle_download(event) {
 }
 
 function download_file_from_s3(event, formData) {
-    const http = new XMLHttpRequest();
-    http.open('GET', event['data']['presigned_url'], false);
-    http.send();
+
+    fetch(event['data']['presigned_url'], {method: 'GET'})
+        .then(function(t) {
+            return t.blob().then((b)=>{
+                var a = document.createElement("a");
+                a.href = URL.createObjectURL(b);
+                a.setAttribute("download", formData.get('file_id'));
+                a.click();
+            }
+            );
+        });
     alert("File downloaded");
 }
 
