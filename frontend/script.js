@@ -1,3 +1,5 @@
+console.warn("hello");
+
 
 function handle_upload(event) {
     event.preventDefault();

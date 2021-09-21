@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/backend/uploader_solution.py
+/backend/downloader_solution.py
+/backend/job_trigger_solution.py
