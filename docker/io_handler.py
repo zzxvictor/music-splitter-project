@@ -83,9 +83,9 @@ if __name__ == '__main__':
     files = glob.glob(output_default_dir + '/*.wav')
     track_lists = {}
     for file in files:
-        track_type = file.split('/')[-1][:-4] # /path/track_type.wav
-        s3_key = '{}_{}'.format(s3_key, track_type)
-        handler.upload_file(file, s3_key)
-        track_lists[track_type] = s3_key
+        track_type = file.split('/')[-1]    # /path/track_type.wav
+        key = '{}_{}'.format(s3_key, track_type)
+        handler.upload_file(file, key)
+        track_lists[track_type] = key
 
     Notifier().send_notification(phone, track_lists)
