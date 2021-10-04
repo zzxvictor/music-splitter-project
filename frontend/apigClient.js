@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 
-var apigClientFactory = {};
+var eapigClientFactory = {};
 apigClientFactory.newClient = function (config) {
     var apigClient = { };
     if(config === undefined) {
